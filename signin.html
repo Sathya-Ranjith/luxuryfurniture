@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Oswald:wght@200..700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="furniture.css">
+    <style>
+        .signin-container {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f8f9fa;
+        }
+
+        .signin-form {
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .form-label {
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+
+        .forgot-password {
+            font-size: 14px;
+            text-align: right;
+            display: block;
+            color: #007bff;
+        }
+
+        .forgot-password:hover {
+            text-decoration: none;
+        }
+    </style>
+
+</head>
+<body >
+    
+    <div class="signin-container" style="background-image: url(assets/signin\ img.jpg); width: 100%; background-size: cover; " >
+        <div class="signin-form" style="z-index: 1; backdrop-filter: blur(10px);; box-shadow: 0px 0px 15px 1px rgb(158, 158, 158);background-color: rgba(255, 255, 255, 0.727);" >
+            <h2 class="text-center mb-4">Sign In</h2>
+            
+            <!-- Sign In Form -->
+            <form action="/signin" method="POST">
+                <!-- Email Input -->
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email Address</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+
+                <!-- Password Input -->
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+
+                <!-- Sign In Button -->
+                <div class="d-grid gap-2 mb-3">
+                    <button type="submit" class="btn btn-primary"><a href="index.html" style="color: white;text-decoration: none;">Sign In</a></button>
+                </div>
+
+                <!-- Forgot Password Link -->
+                <a href="#" class="forgot-password">Forgot your password?</a>
+            </form>
+
+            <!-- Sign Up Prompt -->
+            <p class="text-center mt-4">Don't have an account? <a href="signup.html">Sign Up</a></p>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS (Optional, for functionality like dropdowns, modals, etc.) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"
+  ></script>
+  
+</body>
+</html>

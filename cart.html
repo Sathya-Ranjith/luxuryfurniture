@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Oswald:wght@200..700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="furniture.css">
+    <style>
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            align-items: center;
+        }
+
+        .cart-item-name {
+            flex-grow: 1;
+        }
+
+        .cart-item-price, .cart-item-quantity, .cart-item-total {
+            width: 100px;
+        }
+
+        .cart-item-quantity input {
+            width: 50px;
+        }
+
+        .remove-btn {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        .remove-btn:hover {
+            background-color: #c82333;
+        }
+
+        .cart-item img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+        }
+
+        .cart-total {
+            font-weight: bold;
+            font-size: 1.25rem;
+        }
+
+        .cart-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .cart-count {
+            font-weight: bold;
+            margin-left: 20px;
+        }
+
+        .cart-item-count {
+            color: #fff;
+            background-color: #007bff;
+            padding: 5px 10px;
+            border-radius: 50%;
+        }
+    </style>
+        
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Your Shopping Cart</h2>
+    
+        <div id="cart-items" style="width: 100%;"></div>
+    
+        <!-- Cart Total -->
+        <div class="cart-footer">
+            <h4>Total: ₹<span id="cart-total">0.00</span></h4>
+            <button id="proceed-checkout" class="btn btn-success">Proceed to Checkout</button>
+        </div>
+    
+        <div class="text-center mt-3">
+            <button id="back-to-shop" class="btn btn-warning">Back to Shop</button>
+        </div>
+    </div>
+    
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    
+    <script>
+        // Retrieve cart data from localStorage
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+        // Function to update the cart and total
+        function updateCart() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartTotalElement = document.getElementById('cart-total');
+            cartItemsContainer.innerHTML = ''; // Clear previous cart items
+            let total = 0;
+    
+            cart.forEach((item, index) => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+    
+                const cartItem = document.createElement('div');
+                cartItem.classList.add('cart-item');
+                cartItem.innerHTML = `
+                    <div class="d-flex align-items-center">
+                        <img src="assets/tea1.webp" alt="${item.name}" />
+                        <div class="cart-item-name ms-3" style="width: 250px;">${item.name}</div>
+                    </div>
+                    <div class="cart-item-price"style="width: 100px;">₹${item.price.toFixed(2)}</div>
+                    <div class="cart-item-quantity">
+                        <input type="number" value="${item.quantity}"  class="form-control" data-index="${index}">
+                    </div>
+                    <div class="cart-item-total">₹${itemTotal.toFixed(2)}</div>
+                    <button class="remove-btn" data-index="${index}">Remove</button>
+                `;
+                cartItemsContainer.appendChild(cartItem);
+            });
+    
+            cartTotalElement.textContent = total.toFixed(2);
+        }
+    
+        // Update cart when quantity is changed
+        document.getElementById('cart-items').addEventListener('input', (e) => {
+            if (e.target.classList.contains('form-control')) {
+                const index = e.target.getAttribute('data-index');
+                const newQuantity = parseInt(e.target.value, 10);
+                if (newQuantity > 0) {
+                    cart[index].quantity = newQuantity;
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    updateCart();
+                }
+            }
+        });
+    
+        // Remove item from cart
+        document.getElementById('cart-items').addEventListener('click', (e) => {
+            if (e.target.classList.contains('remove-btn')) {
+                const index = e.target.getAttribute('data-index');
+                cart.splice(index, 1); // Remove item from cart
+                localStorage.setItem('cart', JSON.stringify(cart));
+                updateCart();
+            }
+        });
+    
+        // Proceed to checkout
+        document.getElementById('proceed-checkout').addEventListener('click', () => {
+            localStorage.setItem('cart', JSON.stringify(cart));
+            window.location.href = 'payment.html'; // Redirect to checkout page
+        });
+    
+        // Back to product page
+        document.getElementById('back-to-shop').addEventListener('click', () => {
+            window.location.href = 'index.html'; // Redirect to product page
+        });
+    
+        updateCart();
+    </script>
+    
+</body>
+</html>
