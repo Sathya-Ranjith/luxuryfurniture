@@ -6,6 +6,7 @@
   --primarycolor: #f6dc49;
   --secondarycolor: darkmagenta;
   --3rdcolor:#fd1d1d;
+
  
 }
 .glowing-button {
@@ -120,14 +121,14 @@ body .nav2 {
 .aboutsection{
   display: grid;
   grid-template-columns: 50% 50%;
-  height: 500px;
+  height: 32rem;
   
 }
 .about{
   display: grid;
  margin-top: 50px;
  margin-left: 30px;
- width: 500px;
+ width: 32rem;
  text-align: center;
 
 }
@@ -140,12 +141,12 @@ body .nav2 {
 }
 .about .contactbtn{
   background-color: darkmagenta;
-  width: 150px;
+  width: 10rem;
   height: 50px;
   font-size: 16px;
  justify-content: center;
  color: white;
- margin-left: 200px;
+ margin-left: 12rem;
 }
 .about .contactbtn:hover{
   background-color:var(--primarycolor);
@@ -263,11 +264,12 @@ body .nav2 {
   display: block;
 } */
 .bestimg{
- width: 300px;
- height: 300px;
+ width: 19rem;
+ height: 19rem;
  padding: 15px;
  align-items: center;
- 
+ display: grid;
+ grid-template-rows: 3fr 1fr ;
 }
 /* Contact */
 .content{
@@ -376,7 +378,7 @@ border-radius: 15px;
   
 }
 .grpcontainer{
-  width: 200px;
+  width: 12rem;
   height: 500px;
   padding: 10px;
   box-shadow: 0px 0px 10px 1px rgb(139, 139, 139);
@@ -425,8 +427,8 @@ border-radius: 15px;
   margin-left: 20px;
 }
 .mattressbrandimg{
-  width: 200px;
-  height: 200px;
+  width: 12rem;
+  height: 12rem;
   padding: 10px;
   margin: 30px;
   margin-top: 50px;
