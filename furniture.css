@@ -176,7 +176,7 @@ body .nav2 {
   display: grid;
   grid-template-columns: 2;
   grid-template-rows: 2;
-  padding: 2rem;
+  padding: 1rem;
   margin-top: 30px;
   box-shadow: 0px 0px 10px 1px rgb(139, 139, 139);
 }
@@ -219,7 +219,7 @@ body .nav2 {
 
 }
 .bestsellerimages{
-  width: 300px;
+  width: 19rem;
   padding: 10px;
   box-shadow: 0px 0px 10px 1px rgb(139, 139, 139);
   margin: 20px;
@@ -440,7 +440,7 @@ border-radius: 15px;
 }
 
 @media screen and (max-width: 600px){
-  .top1{
+  .top1,.uplist{
     display: none;
   }
   .aboutsection{
@@ -450,11 +450,15 @@ border-radius: 15px;
     display: inline;
   }
   .sofasection{
-    display:inline;
-    
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
   }
   .sofasimages{
-    display:;
+    display: grid;
+  }
+  .bestsellerbox{
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
   }
 }
 
