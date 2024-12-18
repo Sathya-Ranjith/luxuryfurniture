@@ -450,11 +450,11 @@ border-radius: 15px;
     display: inline;
   }
   .sofasection{
-    display: grid;
-    grid-template-columns: repeat(1,1fr);
+    display: inline;
+   
   }
   .sofasimages{
-    display: grid;
+    display: inline;
   }
   .bestsellerbox{
     display: grid;
